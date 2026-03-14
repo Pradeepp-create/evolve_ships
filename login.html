@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Reviews</title>
+<title>Login</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -17,32 +17,17 @@
 </ul>
 </nav>
 
-<section class="reviews">
+<section class="login">
 
-<h1>Student Reviews</h1>
+<h1>Login / Register</h1>
 
-<div class="review">
-<p>"Amazing platform to find internships!"</p>
-<h4>- Rahul</h4>
-</div>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
 
-<div class="review">
-<p>"Got my first web development internship."</p>
-<h4>- Priya</h4>
-</div>
+<button onclick="register()">Register</button>
+<button onclick="login()">Login</button>
 
-</section>
-
-<section class="feedback">
-
-<h2>Leave Feedback</h2>
-
-<input type="text" id="name" placeholder="Your Name">
-<textarea id="feedbackText" placeholder="Your feedback"></textarea>
-
-<button onclick="submitFeedback()">Submit</button>
-
-<p id="feedbackMessage"></p>
+<p id="loginMessage"></p>
 
 </section>
 
