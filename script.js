@@ -1,32 +1,132 @@
-// PROTECT INTERNSHIP PAGE
+// ==============================
+// MOBILE NAVBAR
+// ==============================
 
-if(window.location.pathname.includes("internships.html")){
+function toggleMenu(){
 
-let loggedIn = localStorage.getItem("loggedIn");
+const menu = document.getElementById("navLinks");
 
-if(loggedIn !== "true"){
-
-window.location.href="login.html";
-
+if(menu){
+menu.classList.toggle("active");
 }
 
 }
 
-function browseInternships(){
 
-let loggedIn = localStorage.getItem("loggedIn");
+// ==============================
+// REGISTER USER
+// ==============================
 
-if(loggedIn === "true"){
+function register(){
 
-window.location.href="internships.html";
+const username = document.getElementById("username").value.trim();
+const password = document.getElementById("password").value.trim();
+const message = document.getElementById("loginMessage");
+
+if(username === "" || password === ""){
+message.innerText = "Please fill all fields";
+return;
+}
+
+localStorage.setItem("user", username);
+localStorage.setItem("pass", password);
+
+message.innerText = "Registration successful. Now login.";
+
+}
+
+
+// ==============================
+// LOGIN USER
+// ==============================
+
+function login(){
+
+const username = document.getElementById("username").value.trim();
+const password = document.getElementById("password").value.trim();
+
+const savedUser = localStorage.getItem("user");
+const savedPass = localStorage.getItem("pass");
+
+const message = document.getElementById("loginMessage");
+
+if(username === savedUser && password === savedPass){
+
+localStorage.setItem("loggedIn","true");
+
+message.innerText = "Login successful";
+
+setTimeout(()=>{
+window.location.href = "index.html";
+},800);
 
 }else{
 
-window.location.href="login.html";
+message.innerText = "Invalid username or password";
 
 }
 
 }
+
+
+// ==============================
+// LOGOUT
+// ==============================
+
+function logout(){
+
+localStorage.removeItem("loggedIn");
+
+window.location.href = "login.html";
+
+}
+
+
+// ==============================
+// BROWSE INTERNSHIPS BUTTON
+// ==============================
+
+function browseInternships(){
+
+const loggedIn = localStorage.getItem("loggedIn");
+
+if(loggedIn === "true"){
+
+window.location.href = "internship.html";
+
+}else{
+
+window.location.href = "login.html";
+
+}
+
+}
+
+
+// ==============================
+// PROTECT PAGES (LOGIN REQUIRED)
+// ==============================
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const page = window.location.pathname;
+
+if(page.includes("index.html") || page.includes("internship.html") || page.includes("review.html")){
+
+if(localStorage.getItem("loggedIn") !== "true"){
+
+window.location.href = "login.html";
+
+}
+
+}
+
+});
+
+
+// ==============================
+// INTERNSHIP LIST
+// ==============================
 
 const internships = [
 
@@ -53,29 +153,38 @@ const internships = [
 
 ];
 
+
+// ==============================
+// GENERATE INTERNSHIP CARDS
+// ==============================
+
 const container = document.getElementById("courseContainer");
 
 if(container){
 
-internships.forEach(course=>{
+internships.forEach(course => {
 
-let div = document.createElement("div");
+let card = document.createElement("div");
 
-div.classList.add("course");
+card.classList.add("course");
 
-div.innerHTML=`
+card.innerHTML = `
 <h3>${course}</h3>
 <p>Duration: 3 Months</p>
 <p>Stipend: ₹5000</p>
 <button onclick="apply('${course}')">Apply</button>
 `;
 
-container.appendChild(div);
+container.appendChild(card);
 
 });
 
 }
 
+
+// ==============================
+// APPLY FUNCTION
+// ==============================
 
 function apply(course){
 
@@ -84,74 +193,28 @@ alert("Application submitted for " + course);
 }
 
 
-// LOGIN SYSTEM
-// REGISTER
-
-function register(){
-
-let user=document.getElementById("username").value;
-let pass=document.getElementById("password").value;
-
-if(user==="" || pass===""){
-
-document.getElementById("loginMessage").innerText="Fill all fields";
-return;
-
-}
-
-localStorage.setItem("user",user);
-localStorage.setItem("pass",pass);
-
-document.getElementById("loginMessage").innerText="Registration successful. Now login.";
-
-}
-
-function login(){
-
-let user=document.getElementById("username").value;
-let pass=document.getElementById("password").value;
-
-let savedUser=localStorage.getItem("user");
-let savedPass=localStorage.getItem("pass");
-
-if(user===savedUser && pass===savedPass){
-
-localStorage.setItem("loggedIn","true");
-
-document.getElementById("loginMessage").innerText="Login successful";
-
-setTimeout(()=>{
-
-window.location.href="internships.html";
-
-},1000);
-
-}else{
-
-document.getElementById("loginMessage").innerText="Invalid login";
-
-}
-
-}
-// FEEDBACK
+// ==============================
+// FEEDBACK SYSTEM
+// ==============================
 
 function submitFeedback(){
 
-document.getElementById("feedbackMessage").innerText="Thanks for your feedback!";
+const name = document.getElementById("name");
+const feedback = document.getElementById("feedbackText");
+const message = document.getElementById("feedbackMessage");
+
+if(!name || !feedback) return;
+
+if(name.value.trim() === "" || feedback.value.trim() === ""){
+
+message.innerText = "Please enter your feedback";
+
+}else{
+
+message.innerText = "Thank you for your feedback!";
+name.value = "";
+feedback.value = "";
 
 }
-
-function toggleMenu(){
-
-let menu = document.getElementById("navLinks");
-
-menu.classList.toggle("active");
-
-}
-function logout(){
-
-localStorage.removeItem("loggedIn");
-
-window.location.href="index.html";
 
 }
