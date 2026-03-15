@@ -99,3 +99,11 @@ function submitFeedback(){
 document.getElementById("feedbackMessage").innerText="Thanks for your feedback!";
 
 }
+
+function toggleMenu(){
+
+let menu=document.getElementById("navLinks");
+
+menu.classList.toggle("show");
+
+}
