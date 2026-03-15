@@ -373,9 +373,7 @@ margin-bottom:10px;
 }
 
 
-/* ===============================
-INTERNSHIP PAGE
-=============================== */
+/* INTERNSHIP PAGE */
 
 .internship-page{
 padding:80px 40px;
@@ -386,21 +384,7 @@ text-align:center;
 
 .internship-page h1{
 font-size:36px;
-margin-bottom:30px;
-}
-
-
-/* SEARCH BAR */
-
-#searchBar{
-width:300px;
-padding:12px 15px;
-border-radius:8px;
-border:none;
-background:#020617;
-border:1px solid #1e293b;
-color:white;
-margin-bottom:25px;
+margin-bottom:35px;
 }
 
 
@@ -416,7 +400,7 @@ border:1px solid #1e293b;
 color:white;
 padding:10px 18px;
 margin:6px;
-border-radius:6px;
+border-radius:8px;
 cursor:pointer;
 transition:0.3s;
 }
@@ -427,7 +411,7 @@ border-color:#38bdf8;
 }
 
 
-/* INTERNSHIP GRID */
+/* GRID */
 
 .internship-container{
 display:grid;
@@ -436,17 +420,14 @@ gap:25px;
 }
 
 
-/* INTERNSHIP CARD */
+/* CARD */
 
 .internship-card{
 background:#020617;
 border:1px solid #1e293b;
-border-radius:12px;
+border-radius:14px;
 padding:25px;
-text-align:center;
 transition:0.3s;
-position:relative;
-overflow:hidden;
 }
 
 .internship-card:hover{
@@ -460,15 +441,7 @@ box-shadow:0 10px 25px rgba(0,0,0,0.4);
 
 .intern-img{
 width:65px;
-margin-bottom:12px;
-}
-
-
-/* TITLE */
-
-.internship-card h3{
 margin-bottom:10px;
-font-size:18px;
 }
 
 
@@ -479,12 +452,12 @@ margin:12px 0;
 }
 
 .tag{
-display:inline-block;
 background:#0f172a;
-padding:5px 10px;
+padding:6px 10px;
 font-size:12px;
 border-radius:6px;
 margin:3px;
+display:inline-block;
 color:#94a3b8;
 }
 
@@ -504,71 +477,4 @@ transition:0.3s;
 
 .apply-btn:hover{
 background:#0ea5e9;
-}
-
-
-/* POPUP */
-
-.popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-display:none;
-justify-content:center;
-align-items:center;
-}
-
-.popup-content{
-background:#020617;
-border:1px solid #1e293b;
-padding:40px;
-border-radius:10px;
-text-align:center;
-}
-
-.popup-content button{
-margin-top:15px;
-padding:10px 20px;
-border:none;
-background:#38bdf8;
-color:white;
-border-radius:6px;
-cursor:pointer;
-}
-
-
-/* FOOTER */
-
-.footer{
-margin-top:80px;
-padding:40px;
-background:#020617;
-border-top:1px solid #1e293b;
-}
-
-.footer-container{
-display:flex;
-justify-content:space-between;
-flex-wrap:wrap;
-gap:20px;
-max-width:1200px;
-margin:auto;
-}
-
-.footer-section h3{
-margin-bottom:10px;
-}
-
-.footer-section p{
-color:#94a3b8;
-margin:4px 0;
-}
-
-copyright{
-text-align:center;
-margin-top:20px;
-color:#94a3b8;
 }
