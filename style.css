@@ -186,7 +186,14 @@ margin-top:14px;
 font-size:14px;
 color:#f87171;
 }
-
+.site-title{
+position:absolute;
+top:80px;
+font-size:36px;
+color:#38bdf8;
+letter-spacing:1px;
+font-weight:600;
+}
 /* INTERNSHIP COURSES */
 
 .courses{
