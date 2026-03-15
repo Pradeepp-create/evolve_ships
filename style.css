@@ -7,12 +7,11 @@ box-sizing:border-box;
 }
 
 body{
+margin:0;
 font-family:"Segoe UI",Arial,sans-serif;
 background:#0b1120;
 color:#e2e8f0;
-line-height:1.6;
 }
-
 
 /* NAVBAR */
 
@@ -23,11 +22,7 @@ align-items:center;
 padding:18px 60px;
 background:#020617;
 border-bottom:1px solid #1e293b;
-position:sticky;
-top:0;
-z-index:100;
 }
-
 .logo{
 font-size:22px;
 font-weight:600;
@@ -54,9 +49,13 @@ color:#38bdf8;
 
 /* HERO */
 
+/* HERO SECTION */
+
 .hero{
 text-align:center;
 padding:80px 20px;
+background:#0b1120;
+color:white;
 }
 
 .hero h1{
@@ -66,6 +65,7 @@ margin-bottom:10px;
 }
 
 .hero p{
+margin-top:10px;
 font-size:18px;
 color:#94a3b8;
 }
