@@ -21,25 +21,27 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 40px;
-background:rgba(2,6,23,0.9);
-backdrop-filter:blur(10px);
+background:#020617;
 position:sticky;
 top:0;
-z-index:100;
-border-bottom:1px solid rgba(255,255,255,0.05);
+z-index:1000;
 }
 
+/* LOGO */
+
 .logo{
-font-size:24px;
+font-size:22px;
 font-weight:700;
 color:#38bdf8;
-letter-spacing:1px;
 }
+
+/* NAV LINKS */
 
 .nav-links{
 display:flex;
-gap:30px;
+gap:28px;
 list-style:none;
+align-items:center;
 }
 
 .nav-links a{
@@ -53,6 +55,60 @@ transition:0.3s;
 color:#38bdf8;
 }
 
+/* MENU ICON */
+
+.menu-toggle{
+display:none;
+font-size:30px;
+cursor:pointer;
+color:white;
+}
+
+/* ================= MOBILE NAVBAR ================= */
+
+@media(max-width:768px){
+
+.navbar{
+position:relative;
+}
+
+.menu-toggle{
+display:block;
+}
+
+/* HIDE MENU */
+
+.nav-links{
+display:none;
+flex-direction:column;
+position:absolute;
+top:65px;
+right:0;
+width:100%;
+background:#020617;
+padding:25px 0;
+border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* SHOW MENU */
+
+.nav-links.active{
+display:flex;
+}
+
+/* LINKS STYLE */
+
+.nav-links li{
+text-align:center;
+padding:12px 0;
+}
+
+.nav-links a{
+font-size:16px;
+display:block;
+}
+
+}
 
 /* HERO */
 
