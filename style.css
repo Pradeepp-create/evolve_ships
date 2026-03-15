@@ -111,11 +111,30 @@ border:none;
 color:white;
 }
 
-footer{
-text-align:center;
-padding:20px;
+.footer{
 background:#020617;
+padding:40px;
 margin-top:40px;
+}
+
+.footer-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:30px;
+}
+
+.footer-section h3{
+color:#38bdf8;
+margin-bottom:10px;
+}
+
+.footer-section p{
+margin:6px 0;
+}
+
+.copyright{
+text-align:center;
+margin-top:20px;
 }
 
 .menu-toggle{
