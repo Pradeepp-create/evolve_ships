@@ -91,52 +91,77 @@ background:#1d4ed8;
 /* LOGIN SECTION */
 
 .login-section{
+min-height:80vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:80px 20px;
+padding:40px 20px;
 }
 
+/* LOGIN CARD */
+
 .login-card{
-background:white;
-padding:40px;
-width:360px;
-border-radius:8px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
+background:#1e293b;
+padding:40px 35px;
+width:380px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
 text-align:center;
 }
 
 .login-card h2{
-margin-bottom:20px;
-color:#2563eb;
+color:#38bdf8;
+margin-bottom:25px;
+font-size:24px;
+font-weight:600;
 }
+
+/* INPUTS */
 
 .login-card input{
 width:100%;
-padding:12px;
-margin:10px 0;
-border:1px solid #e2e8f0;
-border-radius:6px;
+padding:14px;
+margin:12px 0;
+border:none;
+border-radius:8px;
+background:#0f172a;
+color:white;
 font-size:14px;
+outline:none;
 }
+
+.login-card input::placeholder{
+color:#94a3b8;
+}
+
+/* BUTTONS */
 
 .login-card button{
 width:100%;
-padding:12px;
-margin-top:10px;
-background:#2563eb;
+padding:14px;
+margin-top:12px;
 border:none;
+border-radius:8px;
+background:#38bdf8;
 color:white;
-border-radius:6px;
 font-size:15px;
+font-weight:500;
 cursor:pointer;
-transition:0.3s;
+transition:all 0.25s ease;
 }
 
 .login-card button:hover{
-background:#1d4ed8;
+background:#0ea5e9;
+transform:translateY(-1px);
 }
 
+/* LOGIN MESSAGE */
+
+#loginMessage{
+margin-top:12px;
+font-size:14px;
+color:#f87171;
+}
 
 /* INTERNSHIP COURSES */
 
