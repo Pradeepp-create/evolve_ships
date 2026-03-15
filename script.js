@@ -148,3 +148,10 @@ let menu = document.getElementById("navLinks");
 menu.classList.toggle("active");
 
 }
+function logout(){
+
+localStorage.removeItem("loggedIn");
+
+window.location.href="index.html";
+
+}
