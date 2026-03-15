@@ -143,8 +143,8 @@ document.getElementById("feedbackMessage").innerText="Thanks for your feedback!"
 
 function toggleMenu(){
 
-let menu=document.getElementById("navLinks");
+let menu = document.getElementById("navLinks");
 
-menu.classList.toggle("show");
+menu.classList.toggle("active");
 
 }
