@@ -3,15 +3,20 @@
 <head>
 <title>InternHub</title>
 <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 
+<!-- LOGIN CHECK -->
 <script>
 if(localStorage.getItem("loggedIn") !== "true"){
 window.location.href="login.html";
 }
 </script>
+
+
+<!-- NAVBAR -->
 
 <nav class="navbar">
 
@@ -28,14 +33,112 @@ window.location.href="login.html";
 
 </nav>
 
+
+<!-- HERO -->
+
 <section class="hero">
 
 <h1>Find Your Dream Internship</h1>
-<p>Start building your career today</p>
+
+<p>Explore opportunities from top companies and start building your career.</p>
 
 <button onclick="browseInternships()">Browse Internships</button>
 
 </section>
+
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<h2>Why Choose InternHub?</h2>
+
+<div class="feature-container">
+
+<div class="feature">
+<h3>Top Internships</h3>
+<p>Explore internships across technology, business, design, and more.</p>
+</div>
+
+<div class="feature">
+<h3>Skill Development</h3>
+<p>Gain real world experience and build valuable professional skills.</p>
+</div>
+
+<div class="feature">
+<h3>Career Growth</h3>
+<p>Improve your resume and increase your chances of landing a full time job.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- INTERNSHIP PREVIEW -->
+
+<section class="courses">
+
+<h2>Popular Internship Fields</h2>
+
+<div class="course-container">
+
+<div class="course">
+<h3>Web Development</h3>
+<p>Build modern websites and applications.</p>
+</div>
+
+<div class="course">
+<h3>Data Analytics</h3>
+<p>Analyze data and gain insights for businesses.</p>
+</div>
+
+<div class="course">
+<h3>UI/UX Design</h3>
+<p>Design beautiful and user friendly interfaces.</p>
+</div>
+
+<div class="course">
+<h3>Digital Marketing</h3>
+<p>Learn marketing strategies for modern brands.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-section">
+<h3>InternHub</h3>
+<p>Helping students discover internships and gain real world experience.</p>
+</div>
+
+<div class="footer-section">
+<h3>Platform</h3>
+<p>Internships</p>
+<p>Student Reviews</p>
+<p>Career Support</p>
+</div>
+
+<div class="footer-section">
+<h3>Contact</h3>
+<p>Email: support@internhub.com</p>
+<p>Phone: +91 9876543210</p>
+<p>Chennai, India</p>
+</div>
+
+</div>
+
+<p class="copyright">© 2026 InternHub</p>
+
+</footer>
+
 
 <script src="script.js"></script>
 
