@@ -1,4 +1,32 @@
-// INTERNSHIP LIST
+// PROTECT INTERNSHIP PAGE
+
+if(window.location.pathname.includes("internships.html")){
+
+let loggedIn = localStorage.getItem("loggedIn");
+
+if(loggedIn !== "true"){
+
+window.location.href="login.html";
+
+}
+
+}
+
+function browseInternships(){
+
+let loggedIn = localStorage.getItem("loggedIn");
+
+if(loggedIn === "true"){
+
+window.location.href="internships.html";
+
+}else{
+
+window.location.href="login.html";
+
+}
+
+}
 
 const internships = [
 
@@ -57,19 +85,26 @@ alert("Application submitted for " + course);
 
 
 // LOGIN SYSTEM
+// REGISTER
 
 function register(){
 
 let user=document.getElementById("username").value;
 let pass=document.getElementById("password").value;
 
-localStorage.setItem("user",user);
-localStorage.setItem("pass",pass);
+if(user==="" || pass===""){
 
-document.getElementById("loginMessage").innerText="Registered successfully";
+document.getElementById("loginMessage").innerText="Fill all fields";
+return;
 
 }
 
+localStorage.setItem("user",user);
+localStorage.setItem("pass",pass);
+
+document.getElementById("loginMessage").innerText="Registration successful. Now login.";
+
+}
 
 function login(){
 
@@ -81,7 +116,15 @@ let savedPass=localStorage.getItem("pass");
 
 if(user===savedUser && pass===savedPass){
 
+localStorage.setItem("loggedIn","true");
+
 document.getElementById("loginMessage").innerText="Login successful";
+
+setTimeout(()=>{
+
+window.location.href="internships.html";
+
+},1000);
 
 }else{
 
@@ -90,8 +133,6 @@ document.getElementById("loginMessage").innerText="Invalid login";
 }
 
 }
-
-
 // FEEDBACK
 
 function submitFeedback(){
