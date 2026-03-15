@@ -1,134 +1,80 @@
-// ==============================
-// MOBILE NAVBAR
-// ==============================
-
+// MOBILE MENU
 function toggleMenu(){
-
-const menu = document.getElementById("navLinks");
-
-if(menu){
-menu.classList.toggle("active");
-}
-
+document.getElementById("navLinks").classList.toggle("active");
 }
 
 
-// ==============================
-// REGISTER USER
-// ==============================
-
+// REGISTER
 function register(){
 
-const username = document.getElementById("username").value.trim();
-const password = document.getElementById("password").value.trim();
-const message = document.getElementById("loginMessage");
+let user=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
 
-if(username === "" || password === ""){
-message.innerText = "Please fill all fields";
+if(user==="" || pass===""){
+document.getElementById("loginMessage").innerText="Fill all fields";
 return;
 }
 
-localStorage.setItem("user", username);
-localStorage.setItem("pass", password);
+localStorage.setItem("user",user);
+localStorage.setItem("pass",pass);
 
-message.innerText = "Registration successful. Now login.";
+document.getElementById("loginMessage").innerText="Registered successfully";
 
 }
 
 
-// ==============================
-// LOGIN USER
-// ==============================
-
+// LOGIN
 function login(){
 
-const username = document.getElementById("username").value.trim();
-const password = document.getElementById("password").value.trim();
+let user=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
 
-const savedUser = localStorage.getItem("user");
-const savedPass = localStorage.getItem("pass");
+let savedUser=localStorage.getItem("user");
+let savedPass=localStorage.getItem("pass");
 
-const message = document.getElementById("loginMessage");
-
-if(username === savedUser && password === savedPass){
+if(user===savedUser && pass===savedPass){
 
 localStorage.setItem("loggedIn","true");
 
-message.innerText = "Login successful";
-
-setTimeout(()=>{
-window.location.href = "index.html";
-},800);
+window.location.href="index.html";
 
 }else{
 
-message.innerText = "Invalid username or password";
+document.getElementById("loginMessage").innerText="Invalid login";
 
 }
 
 }
 
 
-// ==============================
 // LOGOUT
-// ==============================
-
 function logout(){
 
 localStorage.removeItem("loggedIn");
 
-window.location.href = "login.html";
+window.location.href="login.html";
 
 }
 
 
-// ==============================
-// BROWSE INTERNSHIPS BUTTON
-// ==============================
-
+// BROWSE BUTTON
 function browseInternships(){
 
-const loggedIn = localStorage.getItem("loggedIn");
+if(localStorage.getItem("loggedIn")==="true"){
 
-if(loggedIn === "true"){
-
-window.location.href = "internship.html";
+window.location.href="internship.html";
 
 }else{
 
-window.location.href = "login.html";
+window.location.href="login.html";
 
 }
 
 }
 
 
-// ==============================
-// PROTECT PAGES (LOGIN REQUIRED)
-// ==============================
-
-document.addEventListener("DOMContentLoaded", function(){
-
-const page = window.location.pathname;
-
-if(page.includes("index.html") || page.includes("internship.html") || page.includes("review.html")){
-
-if(localStorage.getItem("loggedIn") !== "true"){
-
-window.location.href = "login.html";
-
-}
-
-}
-
-});
-
-
-// ==============================
-// INTERNSHIP LIST
-// ==============================
-
-const internships = [
+// INTERNSHIPS
+const internships=[
 
 "Web Development",
 "Frontend Development",
@@ -153,22 +99,17 @@ const internships = [
 
 ];
 
-
-// ==============================
-// GENERATE INTERNSHIP CARDS
-// ==============================
-
-const container = document.getElementById("courseContainer");
+const container=document.getElementById("courseContainer");
 
 if(container){
 
-internships.forEach(course => {
+internships.forEach(course=>{
 
-let card = document.createElement("div");
+let card=document.createElement("div");
 
 card.classList.add("course");
 
-card.innerHTML = `
+card.innerHTML=`
 <h3>${course}</h3>
 <p>Duration: 3 Months</p>
 <p>Stipend: ₹5000</p>
@@ -182,39 +123,9 @@ container.appendChild(card);
 }
 
 
-// ==============================
-// APPLY FUNCTION
-// ==============================
-
+// APPLY
 function apply(course){
 
-alert("Application submitted for " + course);
-
-}
-
-
-// ==============================
-// FEEDBACK SYSTEM
-// ==============================
-
-function submitFeedback(){
-
-const name = document.getElementById("name");
-const feedback = document.getElementById("feedbackText");
-const message = document.getElementById("feedbackMessage");
-
-if(!name || !feedback) return;
-
-if(name.value.trim() === "" || feedback.value.trim() === ""){
-
-message.innerText = "Please enter your feedback";
-
-}else{
-
-message.innerText = "Thank you for your feedback!";
-name.value = "";
-feedback.value = "";
-
-}
+alert("Applied for "+course);
 
 }
