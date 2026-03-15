@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Internships</title>
+<title>Internships | InternHub</title>
 <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
+
+<!-- NAVBAR -->
 
 <nav class="navbar">
 
@@ -22,13 +25,84 @@
 
 </nav>
 
-<section class="courses">
+
+<!-- INTERNSHIP SECTION -->
+
+<section class="internship-page">
 
 <h1>Available Internships</h1>
 
-<div class="course-container" id="courseContainer"></div>
+<input
+type="text"
+id="searchBar"
+placeholder="Search internships..."
+onkeyup="searchInternships()"
+/>
+
+
+<div class="filters">
+
+<button onclick="filterCategory('all')">All</button>
+<button onclick="filterCategory('tech')">Tech</button>
+<button onclick="filterCategory('design')">Design</button>
+<button onclick="filterCategory('marketing')">Marketing</button>
+
+</div>
+
+
+<div class="internship-container" id="internshipContainer"></div>
 
 </section>
+
+
+<!-- APPLY POPUP -->
+
+<div class="popup" id="applyPopup">
+
+<div class="popup-content">
+
+<h2>Application Submitted</h2>
+
+<p id="popupText"></p>
+
+<button onclick="closePopup()">Close</button>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<div class="footer-container">
+
+<div class="footer-section">
+<h3>InternHub</h3>
+<p>Helping students discover internships and gain real world experience.</p>
+</div>
+
+<div class="footer-section">
+<h3>Platform</h3>
+<p>Internships</p>
+<p>Student Reviews</p>
+<p>Career Support</p>
+</div>
+
+<div class="footer-section">
+<h3>Contact</h3>
+<p>Email: support@internhub.com</p>
+<p>Phone: +91 9876543210</p>
+<p>Chennai, India</p>
+</div>
+
+</div>
+
+<p class="copyright">© 2026 InternHub</p>
+
+</footer>
+
 
 <script src="script.js"></script>
 
