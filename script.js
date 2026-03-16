@@ -187,6 +187,22 @@ window.location.href="login.html";
 return;
 }
 
+/* show popup */
+
+const popup = document.getElementById("applyPopup");
+const text = document.getElementById("popupText");
+
+if(popup && text){
+text.innerText = "You applied for " + title;
+popup.style.display = "flex";
+}
+
+}
+
+function closePopup(){
+document.getElementById("applyPopup").style.display="none";
+}
+
 /* send email only if emailjs exists */
 
 if(typeof emailjs !== "undefined"){
@@ -211,7 +227,6 @@ alert("Application submitted!");
 alert("Application submitted!");
 
 }
-
 
 
 }
