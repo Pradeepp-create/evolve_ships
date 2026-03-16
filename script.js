@@ -202,7 +202,6 @@ popup.style.display = "flex";
 function closePopup(){
 document.getElementById("applyPopup").style.display="none";
 }
-
 /* send email only if emailjs exists */
 
 if(typeof emailjs !== "undefined"){
@@ -229,7 +228,7 @@ alert("Application submitted!");
 }
 
 
-}
+
 function addReview(){
 
 const name=document.getElementById("name").value;
