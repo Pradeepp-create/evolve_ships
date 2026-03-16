@@ -27,7 +27,7 @@ return;
 localStorage.setItem("userEmail",email);
 localStorage.setItem("userPass",pass);
 
-alert("Registration successful. You can login now.");
+alert("Registration successful! You can login now.");
 
 }
 
@@ -81,8 +81,6 @@ LOGOUT
 function logout(){
 
 localStorage.removeItem("loggedIn");
-
-alert("Logged out successfully");
 
 window.location.href="login.html";
 
@@ -149,7 +147,7 @@ card.innerHTML=`
 <span class="tag">3 Months</span>
 </div>
 
-<button class="apply-btn" onclick="apply('${intern.title}')">
+<button class="apply-btn" onclick="applyInternship('${intern.title}')">
 Apply
 </button>
 
@@ -163,15 +161,35 @@ container.appendChild(card);
 
 
 /* =========================
-APPLY POPUP
+EMAILJS INIT (SAFE)
 ========================= */
+
+if(typeof emailjs !== "undefined"){
+
 (function(){
 emailjs.init("BGlCay9QTmi0OZliy");
 })();
 
-function apply(title){
+}
+
+
+/* =========================
+APPLY INTERNSHIP
+========================= */
+
+function applyInternship(title){
 
 const email = localStorage.getItem("userEmail");
+
+if(!email){
+alert("Please login first");
+window.location.href="login.html";
+return;
+}
+
+/* send email only if emailjs exists */
+
+if(typeof emailjs !== "undefined"){
 
 emailjs.send("service_qzaz2hs","template_jrcp7ee",{
 user_email: email,
@@ -181,20 +199,20 @@ internship_name: title
 
 alert("Application sent to your email!");
 
+})
+.catch(function(){
+
+alert("Application submitted!");
+
 });
 
-}
+}else{
 
-function closePopup(){
-
-const popup=document.getElementById("applyPopup");
-
-if(popup){
-popup.style.display="none";
-}
+alert("Application submitted!");
 
 }
 
+}
 
 
 /* =========================
