@@ -27,8 +27,13 @@ function logout(){
 REGISTER USER
 ========================= */
 function register(){
-  const email = document.getElementById("registerEmail")?.value;
-  const pass = document.getElementById("registerPassword")?.value;
+  const emailInput = document.getElementById("registerEmail");
+  const passInput = document.getElementById("registerPassword");
+
+  if(!emailInput || !passInput) return;
+
+  const email = emailInput.value.trim();
+  const pass = passInput.value.trim();
 
   if(!email || !pass){
     alert("Please fill all fields");
@@ -45,8 +50,13 @@ function register(){
 LOGIN USER
 ========================= */
 function login(){
-  const email = document.getElementById("loginEmail")?.value;
-  const pass = document.getElementById("loginPassword")?.value;
+  const emailInput = document.getElementById("loginEmail");
+  const passInput = document.getElementById("loginPassword");
+
+  if(!emailInput || !passInput) return;
+
+  const email = emailInput.value.trim();
+  const pass = passInput.value.trim();
 
   const savedEmail = localStorage.getItem("userEmail");
   const savedPass = localStorage.getItem("userPass");
@@ -86,57 +96,70 @@ const internships = [
 ];
 
 /* =========================
-PAGE-SPECIFIC INTERNSHIP FUNCTIONS
+LOAD INTERNSHIPS
+========================= */
+function loadInternships(){
+  const container = document.getElementById("internshipContainer");
+  if(!container) return;
+
+  container.innerHTML = "";
+
+  internships.forEach(intern => {
+    const card = document.createElement("div");
+    card.className = "internship-card";
+    card.innerHTML = `
+      <img src="${intern.image}" class="intern-img">
+      <h3>${intern.title}</h3>
+      <div class="tags">
+        <span class="tag">Remote</span>
+        <span class="tag">₹5000 Stipend</span>
+        <span class="tag">3 Months</span>
+      </div>
+      <button class="apply-btn">Apply</button>
+    `;
+
+    // Apply button
+    card.querySelector(".apply-btn").addEventListener("click", () => {
+      const email = localStorage.getItem("userEmail");
+      if(!email){
+        alert("Please login first");
+        window.location.href = "login.html";
+        return;
+      }
+
+      const popup = document.getElementById("applyPopup");
+      const popupText = document.getElementById("popupText");
+
+      if(popup && popupText){
+        popupText.innerText = `You applied for "${intern.title}"`;
+        popup.style.display = "flex";
+      }
+
+      if(typeof emailjs !== "undefined"){
+        emailjs.init("BGlCay9QTmi0OZliy");
+        emailjs.send("service_qzaz2hs","template_jrcp7ee",{
+          user_email: email,
+          internship_name: intern.title
+        }).then(()=>console.log("Email sent"))
+          .catch(()=>console.log("Email failed"));
+      }
+    });
+
+    container.appendChild(card);
+  });
+}
+
+/* =========================
+CLOSE POPUP
+========================= */
+function closePopup(){
+  const popup = document.getElementById("applyPopup");
+  if(popup) popup.style.display = "none";
+}
+
+/* =========================
+INIT
 ========================= */
 document.addEventListener("DOMContentLoaded", function(){
-  const container = document.getElementById("internshipContainer");
-  const popup = document.getElementById("applyPopup");
-  const popupText = document.getElementById("popupText");
-
-  if(container){
-    internships.forEach(intern => {
-      const card = document.createElement("div");
-      card.className = "internship-card";
-      card.innerHTML = `
-        <img src="${intern.image}" class="intern-img">
-        <h3>${intern.title}</h3>
-        <div class="tags">
-          <span class="tag">Remote</span>
-          <span class="tag">₹5000 Stipend</span>
-          <span class="tag">3 Months</span>
-        </div>
-        <button class="apply-btn">Apply</button>
-      `;
-
-      const btn = card.querySelector(".apply-btn");
-      btn.addEventListener("click", () => {
-        const email = localStorage.getItem("userEmail");
-        if(!email){
-          alert("Please login first");
-          window.location.href = "login.html";
-          return;
-        }
-
-        if(popup && popupText){
-          popupText.innerText = `You applied for "${intern.title}"`;
-          popup.style.display = "flex";
-        }
-
-        if(typeof emailjs !== "undefined"){
-          emailjs.init("BGlCay9QTmi0OZliy");
-          emailjs.send("service_qzaz2hs","template_jrcp7ee",{
-            user_email: email,
-            internship_name: intern.title
-          }).then(()=>console.log("Email sent"))
-            .catch(()=>console.log("Email failed"));
-        }
-      });
-
-      container.appendChild(card);
-    });
-  }
-
-  window.closePopup = function(){
-    if(popup) popup.style.display = "none";
-  };
+  loadInternships();
 });
