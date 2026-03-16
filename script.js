@@ -24,6 +24,42 @@ function logout(){
 }
 
 /* =========================
+REGISTER USER
+========================= */
+function register(){
+  const email = document.getElementById("registerEmail")?.value;
+  const pass = document.getElementById("registerPassword")?.value;
+
+  if(!email || !pass){
+    alert("Please fill all fields");
+    return;
+  }
+
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("userPass", pass);
+
+  alert("Registration successful! You can login now.");
+}
+
+/* =========================
+LOGIN USER
+========================= */
+function login(){
+  const email = document.getElementById("loginEmail")?.value;
+  const pass = document.getElementById("loginPassword")?.value;
+
+  const savedEmail = localStorage.getItem("userEmail");
+  const savedPass = localStorage.getItem("userPass");
+
+  if(email === savedEmail && pass === savedPass){
+    localStorage.setItem("loggedIn", "true");
+    window.location.href = "index.html";
+  } else {
+    alert("Incorrect email or password");
+  }
+}
+
+/* =========================
 INTERNSHIPS DATA
 ========================= */
 const internships = [
@@ -53,14 +89,11 @@ const internships = [
 PAGE-SPECIFIC INTERNSHIP FUNCTIONS
 ========================= */
 document.addEventListener("DOMContentLoaded", function(){
-
   const container = document.getElementById("internshipContainer");
   const popup = document.getElementById("applyPopup");
   const popupText = document.getElementById("popupText");
 
-  // Only run if we're on the internship page
   if(container){
-    // Load all internships
     internships.forEach(intern => {
       const card = document.createElement("div");
       card.className = "internship-card";
@@ -75,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function(){
         <button class="apply-btn">Apply</button>
       `;
 
-      // Apply button click
       const btn = card.querySelector(".apply-btn");
       btn.addEventListener("click", () => {
         const email = localStorage.getItem("userEmail");
@@ -90,7 +122,6 @@ document.addEventListener("DOMContentLoaded", function(){
           popup.style.display = "flex";
         }
 
-        // Send email via EmailJS if available
         if(typeof emailjs !== "undefined"){
           emailjs.init("BGlCay9QTmi0OZliy");
           emailjs.send("service_qzaz2hs","template_jrcp7ee",{
@@ -105,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
-  // Close popup function
   window.closePopup = function(){
     if(popup) popup.style.display = "none";
   };
