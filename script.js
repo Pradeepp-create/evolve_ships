@@ -225,6 +225,56 @@ Apply
 </button>
 
 `;
+function displayInternships(list){
+
+const container = document.getElementById("internshipContainer");
+
+container.innerHTML = "";
+
+list.forEach(intern => {
+
+const card = document.createElement("div");
+card.className = "internship-card";
+card.setAttribute("data-category", intern.category);
+
+card.innerHTML = `
+
+<img src="${intern.image}" class="intern-img">
+
+<h3>${intern.title}</h3>
+
+<div class="tags">
+<span class="tag">Remote</span>
+<span class="tag">₹5000 Stipend</span>
+<span class="tag">3 Months</span>
+</div>
+
+<button class="apply-btn" onclick="apply('${intern.title}')">
+Apply
+</button>
+
+`;
+
+container.appendChild(card);
+
+});
+
+}
+
+
+function filterCategory(category){
+
+if(category === "all"){
+displayInternships(internships);
+return;
+}
+
+const filtered = internships.filter(intern => intern.category === category);
+
+displayInternships(filtered);
+
+}
+
 
 
 // APPLY
@@ -232,4 +282,8 @@ function apply(course){
 
 alert("Applied for "+course);
 
+}
+
+window.onload = function(){
+displayInternships(internships);
 }
