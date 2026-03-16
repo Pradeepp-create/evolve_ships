@@ -1,449 +1,477 @@
-/* ================= GLOBAL ================= */
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+/* =========================
+GLOBAL
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
 }
 
-body{
-font-family:"Segoe UI",sans-serif;
-background:#0b1120;
-color:#e2e8f0;
-line-height:1.6;
+body {
+  background: #0b1120;
+  color: #e2e8f0;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* ================= NAVBAR ================= */
-
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px 60px;
-background:#020617;
-border-bottom:1px solid #1e293b;
-position:sticky;
-top:0;
-z-index:100;
+/* =========================
+NAVBAR
+========================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 60px;
+  background: #020617;
+  border-bottom: 1px solid #1e293b;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.logo{
-font-size:22px;
-font-weight:700;
-color:#38bdf8;
-letter-spacing:1px;
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #38bdf8;
+  cursor: pointer;
 }
 
-.nav-links{
-display:flex;
-gap:30px;
-list-style:none;
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
 }
 
-.nav-links a{
-text-decoration:none;
-color:#cbd5f5;
-font-weight:500;
-transition:.3s;
+.nav-links a {
+  text-decoration: none;
+  color: #cbd5f5;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-.nav-links a:hover{
-color:#38bdf8;
+.nav-links a:hover,
+.nav-links a.active {
+  color: #38bdf8;
 }
 
-/* ================= HERO ================= */
-
-.hero{
-text-align:center;
-padding:110px 20px;
+/* =========================
+MOBILE MENU
+========================= */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #38bdf8;
 }
 
-.hero h1{
-font-size:48px;
-color:#38bdf8;
-margin-bottom:15px;
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    right: 0;
+    background: #020617;
+    width: 200px;
+    padding: 20px;
+    border: 1px solid #1e293b;
+  }
+  .nav-links.active {
+    display: flex;
+  }
 }
 
-.hero p{
-color:#94a3b8;
-font-size:18px;
+/* =========================
+HERO SECTION
+========================= */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
 }
 
-.hero button{
-margin-top:30px;
-padding:14px 32px;
-border:none;
-background:linear-gradient(45deg,#38bdf8,#0ea5e9);
-color:white;
-border-radius:10px;
-font-size:16px;
-cursor:pointer;
-transition:.3s;
+.hero h1 {
+  font-size: 48px;
+  color: #38bdf8;
+  margin-bottom: 15px;
+  animation: fadeInDown 1s ease forwards;
 }
 
-.hero button:hover{
-transform:translateY(-4px);
-box-shadow:0 10px 25px rgba(0,0,0,0.5);
+.hero p {
+  color: #94a3b8;
+  font-size: 18px;
+  margin-bottom: 25px;
+  animation: fadeIn 1.5s ease forwards;
 }
 
-/* ================= FEATURES ================= */
-
-.features{
-padding:80px 8%;
-text-align:center;
+.hero button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  background: #38bdf8;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
 }
 
-.features h2{
-font-size:34px;
-margin-bottom:40px;
-color:#38bdf8;
+.hero button:hover {
+  background: #0ea5e9;
+  transform: translateY(-3px);
 }
 
-.feature-container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+/* Animations */
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-20px);}
+  100% { opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeIn {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
 }
 
-.feature{
-background:#020617;
-padding:30px;
-border-radius:14px;
-border:1px solid #1e293b;
-transition:.3s;
+/* =========================
+FEATURES SECTION
+========================= */
+.features {
+  padding: 80px 8%;
+  text-align: center;
 }
 
-.feature:hover{
-transform:translateY(-6px);
-border-color:#38bdf8;
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
+.features h2 {
+  font-size: 36px;
+  color: #38bdf8;
+  margin-bottom: 40px;
 }
 
-/* ================= INTERNSHIP PAGE ================= */
-
-.internship-page{
-padding:80px 8%;
+.feature-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-.internship-page h1{
-text-align:center;
-font-size:38px;
-color:#38bdf8;
-margin-bottom:50px;
+.feature {
+  background: #020617;
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid #1e293b;
+  transition: 0.3s;
 }
 
-.internship-container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:28px;
+.feature:hover {
+  transform: translateY(-6px);
+  border-color: #38bdf8;
 }
 
-/* ================= INTERNSHIP CARD ================= */
-
-.internship-card{
-background:#020617;
-border-radius:16px;
-padding:30px;
-text-align:center;
-border:1px solid #1e293b;
-transition:.35s;
-position:relative;
-overflow:hidden;
+/* =========================
+INTERNSHIP CARDS
+========================= */
+.internship-page {
+  padding: 70px 8%;
 }
 
-.internship-card:hover{
-transform:translateY(-10px);
-box-shadow:0 15px 35px rgba(0,0,0,0.7);
-border-color:#38bdf8;
+.internship-page h1 {
+  text-align: center;
+  font-size: 36px;
+  color: #38bdf8;
+  margin-bottom: 50px;
 }
 
-.intern-img{
-width:70px;
-margin-bottom:18px;
+.internship-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
 }
 
-.internship-card h3{
-margin-bottom:15px;
-font-size:20px;
+.internship-card {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid #334155;
+  transition: 0.3s;
 }
 
-/* TAGS */
-
-.tags{
-display:flex;
-justify-content:center;
-gap:8px;
-flex-wrap:wrap;
-margin-bottom:18px;
+.internship-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.5);
 }
 
-.tag{
-background:#0f172a;
-padding:6px 12px;
-border-radius:6px;
-font-size:12px;
-border:1px solid #334155;
+.internship-card img {
+  width: 70px;
+  margin-bottom: 15px;
 }
 
-/* APPLY BUTTON */
-
-.apply-btn{
-background:linear-gradient(45deg,#38bdf8,#0ea5e9);
-border:none;
-padding:10px 24px;
-border-radius:8px;
-cursor:pointer;
-font-weight:bold;
-transition:.3s;
+.tags {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
 }
 
-.apply-btn:hover{
-transform:scale(1.05);
+.tag {
+  background: #0f172a;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  border: 1px solid #334155;
 }
 
-/* ================= LOGIN ================= */
-
-.login-section{
-min-height:80vh;
-display:flex;
-justify-content:center;
-align-items:center;
+.apply-btn {
+  padding: 10px 22px;
+  background: #38bdf8;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-.login-card{
-background:#020617;
-padding:40px;
-width:380px;
-border-radius:14px;
-border:1px solid #1e293b;
-box-shadow:0 20px 40px rgba(0,0,0,0.6);
-text-align:center;
+.apply-btn:hover {
+  background: #0ea5e9;
 }
 
-.login-card h2{
-color:#38bdf8;
-margin-bottom:25px;
+/* =========================
+LOGIN / REGISTER PAGE
+========================= */
+.login-section {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
 }
 
-.login-card input{
-width:100%;
-padding:14px;
-margin:10px 0;
-border-radius:8px;
-border:1px solid #1e293b;
-background:#0f172a;
-color:white;
+.login-card {
+  background: #020617;
+  padding: 40px;
+  width: 380px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+  border: 1px solid #1e293b;
+  text-align: center;
 }
 
-.login-card button{
-width:100%;
-padding:13px;
-margin-top:10px;
-border:none;
-border-radius:8px;
-background:#38bdf8;
-color:white;
-cursor:pointer;
+.login-card h2 {
+  color: #38bdf8;
+  margin-bottom: 25px;
 }
 
-.login-card button:hover{
-background:#0ea5e9;
+.login-card input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+  background: #0f172a;
+  color: #fff;
+  outline: none;
 }
 
-/* ================= REVIEWS (YouTube Style) ================= */
-
-.reviews{
-padding:80px 8%;
+.login-card input:focus {
+  border-color: #38bdf8;
 }
 
-.reviews h1{
-text-align:center;
-margin-bottom:40px;
-color:#38bdf8;
+.login-card button {
+  width: 100%;
+  padding: 13px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #38bdf8;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
 }
 
-/* comment card */
-
-.review-card{
-display:flex;
-gap:15px;
-background:#020617;
-padding:18px;
-border-radius:10px;
-margin-bottom:16px;
-border:1px solid #1e293b;
-transition:.3s;
+.login-card button:hover {
+  background: #0ea5e9;
+  transform: translateY(-2px);
 }
 
-.review-card:hover{
-background:#0f172a;
+/* =========================
+REVIEWS & FEEDBACK
+========================= */
+.reviews {
+  padding: 60px 8%;
 }
 
-/* avatar */
-
-.review-avatar{
-width:42px;
-height:42px;
-border-radius:50%;
-background:#38bdf8;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-color:black;
+.reviews h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #38bdf8;
 }
 
-/* text */
-
-.review-content h4{
-font-size:15px;
-margin-bottom:3px;
+.comment {
+  display: flex;
+  gap: 15px;
+  background: #1e293b;
+  padding: 18px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #334155;
+  transition: 0.3s;
 }
 
-.review-content p{
-font-size:14px;
-color:#cbd5f5;
+.comment:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
-/* ================= FEEDBACK ================= */
+.review-avatar {
+  width: 50px;
+  height: 50px;
+  background: #38bdf8;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 18px;
+}
 
-.feedback{
-padding:70px 8%;
-text-align:center;
+.comment-body h4 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.comment-body p {
+  font-size: 14px;
+  color: #cbd5f5;
+}
+
+/* Feedback section */
+.feedback {
+  padding: 60px 8%;
+  text-align: center;
 }
 
 .feedback input,
-.feedback textarea{
-width:320px;
-padding:12px;
-margin:10px;
-border-radius:6px;
-background:#020617;
-color:white;
-border:1px solid #1e293b;
+.feedback textarea {
+  width: 320px;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #1e293b;
+  background: #020617;
+  color: white;
 }
 
-.feedback textarea{
-height:100px;
+.feedback textarea {
+  height: 100px;
+  resize: none;
 }
 
-.feedback button{
-padding:12px 26px;
-background:#38bdf8;
-border:none;
-border-radius:6px;
-cursor:pointer;
+.feedback button {
+  padding: 12px 25px;
+  background: #38bdf8;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.feedback button:hover{
-background:#0ea5e9;
+.feedback button:hover {
+  background: #0ea5e9;
+  transform: translateY(-2px);
 }
 
-/* ================= POPUP ================= */
-
-.popup{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-align-items:center;
-justify-content:center;
+/* =========================
+POPUP
+========================= */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
 }
 
-.popup-content{
-background:#020617;
-padding:30px;
-border-radius:12px;
-text-align:center;
-width:320px;
-border:1px solid #1e293b;
+.popup-content {
+  background: #1e293b;
+  padding: 35px;
+  border-radius: 12px;
+  text-align: center;
+  width: 330px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.6);
 }
 
-.popup-content h2{
-color:#38bdf8;
-margin-bottom:10px;
+.popup-content h2 {
+  color: #38bdf8;
+  margin-bottom: 10px;
 }
 
-.popup-content button{
-margin-top:15px;
-padding:10px 20px;
-border:none;
-background:#38bdf8;
-color:white;
-border-radius:6px;
-cursor:pointer;
+.popup-content p {
+  margin-bottom: 20px;
 }
 
-/* ================= FOOTER ================= */
-
-.footer{
-background:#020617;
-padding:60px 8%;
-border-top:1px solid #1e293b;
+.popup-content button {
+  padding: 10px 20px;
+  background: #38bdf8;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.footer-container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:30px;
+.popup-content button:hover {
+  background: #0ea5e9;
+  transform: translateY(-2px);
 }
 
-.footer-section h3{
-color:#38bdf8;
-margin-bottom:10px;
+/* =========================
+FOOTER
+========================= */
+.footer {
+  background: #020617;
+  padding: 60px 8%;
+  border-top: 1px solid #1e293b;
+  margin-top: 60px;
 }
 
-.footer-section p{
-color:#94a3b8;
-margin:6px 0;
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
 }
 
-.copyright{
-text-align:center;
-margin-top:30px;
-font-size:14px;
-color:#64748b;
+.footer-section h3 {
+  color: #38bdf8;
+  margin-bottom: 10px;
 }
 
-/* ================= MOBILE ================= */
-
-.menu-toggle{
-display:none;
-font-size:26px;
-cursor:pointer;
+.footer-section p {
+  color: #94a3b8;
+  margin: 6px 0;
 }
 
-@media(max-width:768px){
-
-.navbar{
-padding:18px 20px;
+.footer p.copyright {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #64748b;
 }
 
-.menu-toggle{
-display:block;
-}
-
-.nav-links{
-display:none;
-flex-direction:column;
-position:absolute;
-top:65px;
-right:0;
-background:#020617;
-width:200px;
-padding:20px;
-border:1px solid #1e293b;
-}
-
-.nav-links.active{
-display:flex;
-}
-
-.hero h1{
-font-size:32px;
-}
-
+/* =========================
+RESPONSIVE
+========================= */
+@media(max-width: 768px) {
+  .hero h1 { font-size: 32px; }
+  .hero { padding: 60px 20px; }
+  .internship-page { padding: 50px 20px; }
+  .features { padding: 50px 20px; }
+  .feedback input, .feedback textarea { width: 90%; }
 }
