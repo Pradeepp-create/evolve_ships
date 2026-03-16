@@ -1,7 +1,31 @@
 /* =========================
-GLOBAL VARIABLES
+CHECK LOGIN
 ========================= */
+function checkLogin(){
+  if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+  }
+}
 
+/* =========================
+NAVBAR MENU
+========================= */
+function toggleMenu(){
+  const nav = document.getElementById("navLinks");
+  if(nav) nav.classList.toggle("active");
+}
+
+/* =========================
+LOGOUT
+========================= */
+function logout(){
+  localStorage.removeItem("loggedIn");
+  window.location.href = "login.html";
+}
+
+/* =========================
+INTERNSHIPS DATA
+========================= */
 const internships = [
   {title:"Frontend Developer",image:"https://img.icons8.com/color/96/html-5.png"},
   {title:"Backend Developer",image:"https://img.icons8.com/color/96/server.png"},
@@ -26,82 +50,13 @@ const internships = [
 ];
 
 /* =========================
-NAVBAR MENU TOGGLE
-========================= */
-
-function toggleMenu() {
-  const nav = document.getElementById("navLinks");
-  if(nav) nav.classList.toggle("active");
-}
-
-/* =========================
-REGISTER USER
-========================= */
-
-function register() {
-  const email = document.getElementById("registerEmail").value;
-  const pass = document.getElementById("registerPassword").value;
-
-  if(!email || !pass){
-    alert("Please fill all fields");
-    return;
-  }
-
-  localStorage.setItem("userEmail", email);
-  localStorage.setItem("userPass", pass);
-
-  alert("Registration successful! You can login now.");
-}
-
-/* =========================
-LOGIN USER
-========================= */
-
-function login() {
-  const email = document.getElementById("loginEmail").value;
-  const pass = document.getElementById("loginPassword").value;
-
-  const savedEmail = localStorage.getItem("userEmail");
-  const savedPass = localStorage.getItem("userPass");
-
-  if(email === savedEmail && pass === savedPass){
-    localStorage.setItem("loggedIn", "true");
-    window.location.href = "index.html";
-  } else {
-    alert("Incorrect email or password");
-  }
-}
-
-/* =========================
-CHECK LOGIN
-========================= */
-
-function checkLogin(){
-  const status = localStorage.getItem("loggedIn");
-  if(status !== "true"){
-    window.location.href = "login.html";
-  }
-}
-
-/* =========================
-LOGOUT
-========================= */
-
-function logout(){
-  localStorage.removeItem("loggedIn");
-  window.location.href = "login.html";
-}
-
-/* =========================
 LOAD INTERNSHIPS
 ========================= */
-
 function loadInternships(){
   const container = document.getElementById("internshipContainer");
   if(!container) return;
 
   container.innerHTML = "";
-
   internships.forEach(intern => {
     const card = document.createElement("div");
     card.className = "internship-card";
@@ -122,80 +77,41 @@ function loadInternships(){
 /* =========================
 APPLY INTERNSHIP
 ========================= */
-
 function applyInternship(title){
-    const email = localStorage.getItem("userEmail");
-    if(!email){
-        alert("Please login first");
-        window.location.href = "login.html";
-        return;
-    }
-
-    // Only show popup if popup element exists on this page
-    const popup = document.getElementById("applyPopup");
-    const text = document.getElementById("popupText");
-
-    if(popup && text){
-        text.innerText = `You applied for "${title}"`;
-        popup.style.display = "flex";
-    }
-
-    // EmailJS send (safe)
-    if(typeof emailjs !== "undefined"){
-        emailjs.send("service_qzaz2hs","template_jrcp7ee",{
-            user_email: email,
-            internship_name: title
-        })
-        .then(() => console.log("Application email sent"))
-        .catch(() => console.log("Email sending failed"));
-    }
-}
-
-// Close popup function should be **completely separate**
-function closePopup(){
-    const popup = document.getElementById("applyPopup");
-    if(popup) popup.style.display = "none";
-}
-
-/* =========================
-ADD REVIEW
-========================= */
-
-function addReview(){
-  const name = document.getElementById("name").value.trim();
-  const msg = document.getElementById("feedbackText").value.trim();
-
-  if(!name || !msg){
-    alert("Please fill all fields");
+  const email = localStorage.getItem("userEmail");
+  if(!email){
+    alert("Please login first");
+    window.location.href = "login.html";
     return;
   }
 
-  const container = document.getElementById("newReviews");
-  if(!container) return;
+  const popup = document.getElementById("applyPopup");
+  const text = document.getElementById("popupText");
 
-  const review = document.createElement("div");
-  review.className = "review-card";
-  review.innerHTML = `
-    <div class="review-avatar">${name.charAt(0).toUpperCase()}</div>
-    <div class="review-content">
-      <p>${msg}</p>
-      <h4>- ${name}</h4>
-    </div>
-  `;
-  container.prepend(review); // new reviews appear on top
+  if(popup && text){
+    text.innerText = `You applied for "${title}"`;
+    popup.style.display = "flex";
+  }
 
-  // Clear inputs
-  document.getElementById("name").value = "";
-  document.getElementById("feedbackText").value = "";
+  // Safe EmailJS
+  if(typeof emailjs !== "undefined"){
+    emailjs.init("BGlCay9QTmi0OZliy");
+    emailjs.send("service_qzaz2hs","template_jrcp7ee",{
+      user_email: email,
+      internship_name: title
+    }).then(()=>console.log("Email sent"))
+      .catch(()=>console.log("Email failed"));
+  }
+}
+
+function closePopup(){
+  const popup = document.getElementById("applyPopup");
+  if(popup) popup.style.display = "none";
 }
 
 /* =========================
-PAGE INIT
+INIT PAGE
 ========================= */
-
 document.addEventListener("DOMContentLoaded", function(){
-  // Load internships if container exists
-  if(document.getElementById("internshipContainer")){
-    loadInternships();
-  }
+  loadInternships();
 });
