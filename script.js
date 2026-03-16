@@ -50,68 +50,63 @@ const internships = [
 ];
 
 /* =========================
-LOAD INTERNSHIPS
-========================= */
-function loadInternships(){
-  const container = document.getElementById("internshipContainer");
-  if(!container) return;
-
-  container.innerHTML = "";
-  internships.forEach(intern => {
-    const card = document.createElement("div");
-    card.className = "internship-card";
-    card.innerHTML = `
-      <img src="${intern.image}" class="intern-img">
-      <h3>${intern.title}</h3>
-      <div class="tags">
-        <span class="tag">Remote</span>
-        <span class="tag">₹5000 Stipend</span>
-        <span class="tag">3 Months</span>
-      </div>
-      <button class="apply-btn" onclick="applyInternship('${intern.title}')">Apply</button>
-    `;
-    container.appendChild(card);
-  });
-}
-
-/* =========================
-APPLY INTERNSHIP
-========================= */
-function applyInternship(title){
-  const email = localStorage.getItem("userEmail");
-  if(!email){
-    alert("Please login first");
-    window.location.href = "login.html";
-    return;
-  }
-
-  const popup = document.getElementById("applyPopup");
-  const text = document.getElementById("popupText");
-
-  if(popup && text){
-    text.innerText = `You applied for "${title}"`;
-    popup.style.display = "flex";
-  }
-
-  // Safe EmailJS
-  if(typeof emailjs !== "undefined"){
-    emailjs.init("BGlCay9QTmi0OZliy");
-    emailjs.send("service_qzaz2hs","template_jrcp7ee",{
-      user_email: email,
-      internship_name: title
-    }).then(()=>console.log("Email sent"))
-      .catch(()=>console.log("Email failed"));
-  }
-}
-
-function closePopup(){
-  const popup = document.getElementById("applyPopup");
-  if(popup) popup.style.display = "none";
-}
-
-/* =========================
-INIT PAGE
+PAGE-SPECIFIC INTERNSHIP FUNCTIONS
 ========================= */
 document.addEventListener("DOMContentLoaded", function(){
-  loadInternships();
+
+  const container = document.getElementById("internshipContainer");
+  const popup = document.getElementById("applyPopup");
+  const popupText = document.getElementById("popupText");
+
+  // Only run if we're on the internship page
+  if(container){
+    // Load all internships
+    internships.forEach(intern => {
+      const card = document.createElement("div");
+      card.className = "internship-card";
+      card.innerHTML = `
+        <img src="${intern.image}" class="intern-img">
+        <h3>${intern.title}</h3>
+        <div class="tags">
+          <span class="tag">Remote</span>
+          <span class="tag">₹5000 Stipend</span>
+          <span class="tag">3 Months</span>
+        </div>
+        <button class="apply-btn">Apply</button>
+      `;
+
+      // Apply button click
+      const btn = card.querySelector(".apply-btn");
+      btn.addEventListener("click", () => {
+        const email = localStorage.getItem("userEmail");
+        if(!email){
+          alert("Please login first");
+          window.location.href = "login.html";
+          return;
+        }
+
+        if(popup && popupText){
+          popupText.innerText = `You applied for "${intern.title}"`;
+          popup.style.display = "flex";
+        }
+
+        // Send email via EmailJS if available
+        if(typeof emailjs !== "undefined"){
+          emailjs.init("BGlCay9QTmi0OZliy");
+          emailjs.send("service_qzaz2hs","template_jrcp7ee",{
+            user_email: email,
+            internship_name: intern.title
+          }).then(()=>console.log("Email sent"))
+            .catch(()=>console.log("Email failed"));
+        }
+      });
+
+      container.appendChild(card);
+    });
+  }
+
+  // Close popup function
+  window.closePopup = function(){
+    if(popup) popup.style.display = "none";
+  };
 });
