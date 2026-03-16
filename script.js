@@ -84,7 +84,7 @@ const internships = [
   {title:"Graphic Designer",image:"https://img.icons8.com/color/96/adobe-photoshop.png"},
   {title:"Product Designer",image:"https://img.icons8.com/color/96/product.png"},
   {title:"Motion Designer",image:"https://img.icons8.com/color/96/video-editing.png"},
-  {title:"Digital Marketing",image:"https://img.icons8.com/color/96/online-advertising.png"},
+  {title:"Digital Marketing",image:"https://img.icons8.com/color/96/digital-marketing.png"},
   {title:"SEO Specialist",image:"https://img.icons8.com/color/96/search.png"},
   {title:"Content Writer",image:"https://img.icons8.com/color/96/blog.png"},
   {title:"Social Media Manager",image:"https://img.icons8.com/color/96/instagram-new.png"},
