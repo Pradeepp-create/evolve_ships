@@ -3,18 +3,15 @@ NAVBAR MENU
 ========================= */
 
 function toggleMenu(){
-
 const nav=document.getElementById("navLinks");
-
 if(nav){
 nav.classList.toggle("active");
 }
-
 }
 
 
 /* =========================
-LOGIN & REGISTER SYSTEM
+REGISTER USER
 ========================= */
 
 function register(){
@@ -23,17 +20,21 @@ const email=document.getElementById("registerEmail").value;
 const pass=document.getElementById("registerPassword").value;
 
 if(email==="" || pass===""){
-alert("Fill all fields");
+alert("Please fill all fields");
 return;
 }
 
 localStorage.setItem("userEmail",email);
 localStorage.setItem("userPass",pass);
 
-alert("Registration successful. Now login.");
+alert("Registration successful. You can login now.");
 
 }
 
+
+/* =========================
+LOGIN USER
+========================= */
 
 function login(){
 
@@ -47,11 +48,11 @@ if(email===savedEmail && pass===savedPass){
 
 localStorage.setItem("loggedIn","true");
 
-window.location.href="internship.html";
+window.location.href="index.html";
 
 }else{
 
-alert("Invalid login");
+alert("Incorrect email or password");
 
 }
 
@@ -59,7 +60,7 @@ alert("Invalid login");
 
 
 /* =========================
-CHECK LOGIN BEFORE ACCESS
+CHECK LOGIN
 ========================= */
 
 function checkLogin(){
@@ -67,9 +68,7 @@ function checkLogin(){
 const status=localStorage.getItem("loggedIn");
 
 if(status!=="true"){
-
 window.location.href="login.html";
-
 }
 
 }
@@ -121,7 +120,7 @@ const internships=[
 
 
 /* =========================
-DISPLAY INTERNSHIPS
+LOAD INTERNSHIPS
 ========================= */
 
 function loadInternships(){
@@ -166,20 +165,25 @@ container.appendChild(card);
 /* =========================
 APPLY POPUP
 ========================= */
+(function(){
+emailjs.init("BGlCay9QTmi0OZliy");
+})();
 
 function apply(title){
 
-const popup=document.getElementById("applyPopup");
+const email = localStorage.getItem("userEmail");
 
-if(!popup) return;
+emailjs.send("service_qzaz2hs","template_jrcp7ee",{
+user_email: email,
+internship_name: title
+})
+.then(function(){
 
-document.getElementById("popupText").innerText=
-"You applied for "+title;
+alert("Application sent to your email!");
 
-popup.style.display="flex";
+});
 
 }
-
 
 function closePopup(){
 
@@ -191,15 +195,6 @@ popup.style.display="none";
 
 }
 
-function checkLogin(){
-
-const status=localStorage.getItem("loggedIn");
-
-if(status!=="true"){
-window.location.href="login.html";
-}
-
-}
 
 
 /* =========================
