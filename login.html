@@ -2,37 +2,45 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Login | InternHub</title>
+<title>InternHub | Login</title>
 <link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+
 <!-- NAVBAR -->
 <nav class="navbar">
   <h2 class="logo">InternHub</h2>
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
   <ul class="nav-links" id="navLinks">
-    <li><a href="login.html" class="active">Login</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="internship.html">Internships</a></li>
     <li><a href="review.html">Reviews</a></li>
   </ul>
 </nav>
 
-<!-- LOGIN/REGISTER SECTION -->
+<!-- HERO -->
+<section class="hero">
+  <h1>Launch Your Career 🚀</h1>
+  <p>Login or Register to explore top internships across industries</p>
+</section>
+
+<!-- LOGIN / REGISTER SECTION -->
 <section class="login-section">
   <div class="login-card">
-    <h2>Login / Register</h2>
-
+    <h2>Login</h2>
     <input type="email" id="loginEmail" placeholder="Email">
     <input type="password" id="loginPassword" placeholder="Password">
     <button type="button" onclick="login()">Login</button>
 
     <hr style="margin:20px 0; border-color:#334155;">
 
-    <input type="email" id="registerEmail" placeholder="Register Email">
-    <input type="password" id="registerPassword" placeholder="Register Password">
+    <h2>Register</h2>
+    <input type="email" id="registerEmail" placeholder="Email">
+    <input type="password" id="registerPassword" placeholder="Password">
     <button type="button" onclick="register()">Register</button>
 
-    <p id="loginMessage"></p>
+    <p id="loginMessage" style="margin-top:10px;color:#f87171;"></p>
   </div>
 </section>
 
@@ -44,16 +52,16 @@
       <p>Helping students discover internships and gain real world experience.</p>
     </div>
     <div class="footer-section">
-      <h3>Contact</h3>
-      <p>Email: support@internhub.com</p>
-      <p>Phone: +91 9876543210</p>
-      <p>Chennai, India</p>
-    </div>
-    <div class="footer-section">
       <h3>Platform</h3>
       <p>Internships</p>
       <p>Student Reviews</p>
       <p>Career Support</p>
+    </div>
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@internhub.com</p>
+      <p>Phone: +91 9876543210</p>
+      <p>Chennai, India</p>
     </div>
   </div>
   <p class="copyright">© 2026 InternHub</p>
