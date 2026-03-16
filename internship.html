@@ -1,96 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <title>Internships | InternHub</title>
 <link rel="stylesheet" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-
 <body onload="checkLogin()">
 
 <!-- NAVBAR -->
-
 <nav class="navbar">
-
-<h2 class="logo">InternHub</h2>
-
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-<ul class="nav-links" id="navLinks">
-<li><a href="index.html">Home</a></li>
-<li><a href="internship.html">Internships</a></li>
-<li><a href="review.html">Reviews</a></li>
-<li><a href="javascript:void(0)" onclick="logout()">Logout</a></li>
-</ul>
-
+  <h2 class="logo">InternHub</h2>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="internship.html" class="active">Internships</a></li>
+    <li><a href="review.html">Reviews</a></li>
+    <li><a href="javascript:void(0)" onclick="logout()">Logout</a></li>
+  </ul>
 </nav>
 
-
-<!-- INTERNSHIP SECTION -->
-
+<!-- INTERNSHIPS PAGE -->
 <section class="internship-page">
-
-<h1>Available Internships</h1>
-
-
-
-
-<div class="internship-container" id="internshipContainer"></div>
-
+  <h1>Available Internships</h1>
+  <div class="internship-container" id="internshipContainer"></div>
 </section>
 
-
 <!-- APPLY POPUP -->
-
 <div class="popup" id="applyPopup">
-
-<div class="popup-content">
-    
-<h2>Application Submitted</h2>
-
-<p id="popupText"></p>
-
-<button onclick="closePopup()">Close</button>
-
+  <div class="popup-content">
+    <h2>Application Submitted</h2>
+    <p id="popupText"></p>
+    <button onclick="closePopup()">Close</button>
+  </div>
 </div>
-
-</div>
-
 
 <!-- FOOTER -->
-
 <footer class="footer">
-
-<div class="footer-container">
-
-<div class="footer-section">
-<h3>InternHub</h3>
-<p>Helping students discover internships and gain real world experience.</p>
-</div>
-
-<div class="footer-section">
-<h3>Platform</h3>
-<p>Internships</p>
-<p>Student Reviews</p>
-<p>Career Support</p>
-</div>
-
-<div class="footer-section">
-<h3>Contact</h3>
-<p>Email: support@internhub.com</p>
-<p>Phone: +91 9876543210</p>
-<p>Chennai, India</p>
-</div>
-
-</div>
-
-<p class="copyright">© 2026 InternHub</p>
-
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>InternHub</h3>
+      <p>Helping students discover internships and gain real world experience.</p>
+    </div>
+    <div class="footer-section">
+      <h3>Platform</h3>
+      <p>Internships</p>
+      <p>Student Reviews</p>
+      <p>Career Support</p>
+    </div>
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@internhub.com</p>
+      <p>Phone: +91 9876543210</p>
+      <p>Chennai, India</p>
+    </div>
+  </div>
+  <p class="copyright">© 2026 InternHub</p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-<script src="script.js"></script>
-
+<script src="internship.js"></script>
 </body>
 </html>
