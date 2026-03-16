@@ -1,71 +1,73 @@
-// MOBILE MENU
+/* =========================
+NAVBAR MENU
+========================= */
+
 function toggleMenu(){
-document.getElementById("navLinks").classList.toggle("active");
+
+const nav=document.getElementById("navLinks");
+
+if(nav){
+nav.classList.toggle("active");
+}
+
 }
 
 
-// REGISTER
+/* =========================
+LOGIN & REGISTER SYSTEM
+========================= */
+
 function register(){
 
-let user=document.getElementById("username").value;
-let pass=document.getElementById("password").value;
+const email=document.getElementById("registerEmail").value;
+const pass=document.getElementById("registerPassword").value;
 
-if(user==="" || pass===""){
-document.getElementById("loginMessage").innerText="Fill all fields";
+if(email==="" || pass===""){
+alert("Fill all fields");
 return;
 }
 
-localStorage.setItem("user",user);
-localStorage.setItem("pass",pass);
+localStorage.setItem("userEmail",email);
+localStorage.setItem("userPass",pass);
 
-document.getElementById("loginMessage").innerText="Registered successfully";
+alert("Registration successful. Now login.");
 
 }
 
 
-// LOGIN
 function login(){
 
-let user=document.getElementById("username").value;
-let pass=document.getElementById("password").value;
+const email=document.getElementById("loginEmail").value;
+const pass=document.getElementById("loginPassword").value;
 
-let savedUser=localStorage.getItem("user");
-let savedPass=localStorage.getItem("pass");
+const savedEmail=localStorage.getItem("userEmail");
+const savedPass=localStorage.getItem("userPass");
 
-if(user===savedUser && pass===savedPass){
+if(email===savedEmail && pass===savedPass){
 
 localStorage.setItem("loggedIn","true");
-
-window.location.href="index.html";
-
-}else{
-
-document.getElementById("loginMessage").innerText="Invalid login";
-
-}
-
-}
-
-
-// LOGOUT
-function logout(){
-
-localStorage.removeItem("loggedIn");
-
-window.location.href="login.html";
-
-}
-
-
-// BROWSE BUTTON
-function browseInternships(){
-
-if(localStorage.getItem("loggedIn")==="true"){
 
 window.location.href="internship.html";
 
 }else{
 
+alert("Invalid login");
+
+}
+
+}
+
+
+/* =========================
+CHECK LOGIN BEFORE ACCESS
+========================= */
+
+function checkLogin(){
+
+const status=localStorage.getItem("loggedIn");
+
+if(status!=="true"){
+
 window.location.href="login.html";
 
 }
@@ -73,171 +75,70 @@ window.location.href="login.html";
 }
 
 
-// INTERNSHIPS
-const internships = [
+/* =========================
+LOGOUT
+========================= */
 
-{
-title:"Frontend Developer",
-category:"tech",
-image:"https://img.icons8.com/color/96/html-5.png"
-},
+function logout(){
 
-{
-title:"Backend Developer",
-category:"tech",
-image:"https://img.icons8.com/color/96/server.png"
-},
+localStorage.removeItem("loggedIn");
 
-{
-title:"Full Stack Developer",
-category:"tech",
-image:"https://img.icons8.com/color/96/source-code.png"
-},
+alert("Logged out successfully");
 
-{
-title:"Python Developer",
-category:"tech",
-image:"https://img.icons8.com/color/96/python.png"
-},
+window.location.href="login.html";
 
-{
-title:"Machine Learning Intern",
-category:"tech",
-image:"https://img.icons8.com/color/96/artificial-intelligence.png"
-},
-
-{
-title:"Data Analyst",
-category:"tech",
-image:"https://img.icons8.com/color/96/combo-chart.png"
-},
-
-{
-title:"UI Designer",
-category:"design",
-image:"https://img.icons8.com/color/96/design.png"
-},
-
-{
-title:"UX Researcher",
-category:"design",
-image:"https://img.icons8.com/color/96/user-experience.png"
-},
-
-{
-title:"Graphic Designer",
-category:"design",
-image:"https://img.icons8.com/color/96/adobe-photoshop.png"
-},
-
-{
-title:"Product Designer",
-category:"design",
-image:"https://img.icons8.com/color/96/product.png"
-},
-
-{
-title:"Motion Designer",
-category:"design",
-image:"https://img.icons8.com/color/96/video-editing.png"
-},
-
-{
-title:"Digital Marketing",
-category:"marketing",
-image:"https://img.icons8.com/color/96/marketing.png"
-},
-
-{
-title:"SEO Specialist",
-category:"marketing",
-image:"https://img.icons8.com/color/96/search.png"
-},
-
-{
-title:"Content Writer",
-category:"marketing",
-image:"https://img.icons8.com/color/96/blog.png"
-},
-
-{
-title:"Social Media Manager",
-category:"marketing",
-image:"https://img.icons8.com/color/96/instagram-new.png"
-},
-
-{
-title:"Brand Marketing",
-category:"marketing",
-image:"https://img.icons8.com/color/96/megaphone.png"
-},
-
-{
-title:"Cyber Security",
-category:"tech",
-image:"https://img.icons8.com/color/96/security-checked.png"
-},
-
-{
-title:"Cloud Computing",
-category:"tech",
-image:"https://img.icons8.com/color/96/cloud.png"
-},
-
-{
-title:"Android Developer",
-category:"tech",
-image:"https://img.icons8.com/color/96/android-os.png"
-},
-
-{
-title:"Game Developer",
-category:"tech",
-image:"https://img.icons8.com/color/96/controller.png"
 }
+
+
+/* =========================
+INTERNSHIP DATA
+========================= */
+
+const internships=[
+
+{title:"Frontend Developer",image:"https://img.icons8.com/color/96/html-5.png"},
+{title:"Backend Developer",image:"https://img.icons8.com/color/96/server.png"},
+{title:"Full Stack Developer",image:"https://img.icons8.com/color/96/source-code.png"},
+{title:"Python Developer",image:"https://img.icons8.com/color/96/python.png"},
+{title:"Machine Learning Intern",image:"https://img.icons8.com/color/96/artificial-intelligence.png"},
+{title:"Data Analyst",image:"https://img.icons8.com/color/96/combo-chart.png"},
+{title:"UI Designer",image:"https://img.icons8.com/color/96/design.png"},
+{title:"UX Researcher",image:"https://img.icons8.com/color/96/user-experience.png"},
+{title:"Graphic Designer",image:"https://img.icons8.com/color/96/adobe-photoshop.png"},
+{title:"Product Designer",image:"https://img.icons8.com/color/96/product.png"},
+{title:"Motion Designer",image:"https://img.icons8.com/color/96/video-editing.png"},
+{title:"Digital Marketing",image:"https://img.icons8.com/color/96/marketing.png"},
+{title:"SEO Specialist",image:"https://img.icons8.com/color/96/search.png"},
+{title:"Content Writer",image:"https://img.icons8.com/color/96/blog.png"},
+{title:"Social Media Manager",image:"https://img.icons8.com/color/96/instagram-new.png"},
+{title:"Brand Marketing",image:"https://img.icons8.com/color/96/megaphone.png"},
+{title:"Cyber Security",image:"https://img.icons8.com/color/96/security-checked.png"},
+{title:"Cloud Computing",image:"https://img.icons8.com/color/96/cloud.png"},
+{title:"Android Developer",image:"https://img.icons8.com/color/96/android-os.png"},
+{title:"Game Developer",image:"https://img.icons8.com/color/96/controller.png"}
 
 ];
 
-const container=document.getElementById("courseContainer");
 
-if(container){
+/* =========================
+DISPLAY INTERNSHIPS
+========================= */
 
-internships.forEach(course=>{
+function loadInternships(){
 
-let card=document.createElement("div");
+const container=document.getElementById("internshipContainer");
 
-card.classList.add("course");
+if(!container) return;
 
-card.innerHTML = `
+container.innerHTML="";
 
-<img src="${intern.image}" class="intern-img">
+internships.forEach(intern=>{
 
-<h3>${intern.title}</h3>
+const card=document.createElement("div");
 
-<div class="tags">
-<span class="tag">Remote</span>
-<span class="tag">₹5000 Stipend</span>
-<span class="tag">3 Months</span>
-</div>
+card.className="internship-card";
 
-<button class="apply-btn" onclick="apply('${intern.title}')">
-Apply
-</button>
-
-`;
-function displayInternships(list){
-
-const container = document.getElementById("internshipContainer");
-
-container.innerHTML = "";
-
-list.forEach(intern => {
-
-const card = document.createElement("div");
-card.className = "internship-card";
-card.setAttribute("data-category", intern.category);
-
-card.innerHTML = `
+card.innerHTML=`
 
 <img src="${intern.image}" class="intern-img">
 
@@ -262,28 +163,51 @@ container.appendChild(card);
 }
 
 
-function filterCategory(category){
+/* =========================
+APPLY POPUP
+========================= */
 
-if(category === "all"){
-displayInternships(internships);
-return;
-}
+function apply(title){
 
-const filtered = internships.filter(intern => intern.category === category);
+const popup=document.getElementById("applyPopup");
 
-displayInternships(filtered);
+if(!popup) return;
 
-}
+document.getElementById("popupText").innerText=
+"You applied for "+title;
 
-
-
-// APPLY
-function apply(course){
-
-alert("Applied for "+course);
+popup.style.display="flex";
 
 }
 
-window.onload = function(){
-displayInternships(internships);
+
+function closePopup(){
+
+const popup=document.getElementById("applyPopup");
+
+if(popup){
+popup.style.display="none";
 }
+
+}
+
+function checkLogin(){
+
+const status=localStorage.getItem("loggedIn");
+
+if(status!=="true"){
+window.location.href="login.html";
+}
+
+}
+
+
+/* =========================
+PAGE LOAD
+========================= */
+
+window.onload=function(){
+
+loadInternships();
+
+};
