@@ -176,7 +176,6 @@ emailjs.init("BGlCay9QTmi0OZliy");
 /* =========================
 APPLY INTERNSHIP
 ========================= */
-
 function applyInternship(title){
 
 const email = localStorage.getItem("userEmail");
@@ -187,7 +186,7 @@ window.location.href="login.html";
 return;
 }
 
-/* show popup */
+/* popup */
 
 const popup = document.getElementById("applyPopup");
 const text = document.getElementById("popupText");
@@ -197,11 +196,29 @@ text.innerText = "You applied for " + title;
 popup.style.display = "flex";
 }
 
-}
-
 function closePopup(){
 document.getElementById("applyPopup").style.display="none";
 }
+
+/* send email */
+
+if(typeof emailjs !== "undefined"){
+
+emailjs.send("service_qzaz2hs","template_jrcp7ee",{
+user_email: email,
+internship_name: title
+})
+.then(function(){
+console.log("Email sent");
+})
+.catch(function(){
+console.log("Email failed");
+});
+
+}
+
+}
+
 /* send email only if emailjs exists */
 
 if(typeof emailjs !== "undefined"){
