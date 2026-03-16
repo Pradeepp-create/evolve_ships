@@ -100,11 +100,11 @@ const internships=[
 {title:"Machine Learning Intern",image:"https://img.icons8.com/color/96/artificial-intelligence.png"},
 {title:"Data Analyst",image:"https://img.icons8.com/color/96/combo-chart.png"},
 {title:"UI Designer",image:"https://img.icons8.com/color/96/design.png"},
-{title:"UX Researcher",image:"https://img.icons8.com/color/96/user-experience.png"},
+{title:"UX Researcher",image:"https://img.icons8.com/color/96/user.png"},
 {title:"Graphic Designer",image:"https://img.icons8.com/color/96/adobe-photoshop.png"},
 {title:"Product Designer",image:"https://img.icons8.com/color/96/product.png"},
 {title:"Motion Designer",image:"https://img.icons8.com/color/96/video-editing.png"},
-{title:"Digital Marketing",image:"https://img.icons8.com/color/96/marketing.png"},
+{title:"Digital Marketing",image:"https://img.icons8.com/color/96/online-advertising.png"},
 {title:"SEO Specialist",image:"https://img.icons8.com/color/96/search.png"},
 {title:"Content Writer",image:"https://img.icons8.com/color/96/blog.png"},
 {title:"Social Media Manager",image:"https://img.icons8.com/color/96/instagram-new.png"},
@@ -211,6 +211,41 @@ alert("Application submitted!");
 alert("Application submitted!");
 
 }
+
+
+
+}
+function addReview(){
+
+const name=document.getElementById("name").value;
+const msg=document.getElementById("message").value;
+
+if(name==="" || msg===""){
+alert("Fill all fields");
+return;
+}
+
+const container=document.getElementById("newReviews");
+
+const review=document.createElement("div");
+
+review.className="comment";
+
+review.innerHTML=`
+
+<img src="https://i.pravatar.cc/50">
+
+<div class="comment-body">
+<h4>${name}</h4>
+<p>${msg}</p>
+</div>
+
+`;
+
+container.appendChild(review);
+
+document.getElementById("name").value="";
+document.getElementById("message").value="";
 
 }
 
