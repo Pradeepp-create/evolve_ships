@@ -157,9 +157,51 @@ function closePopup(){
   if(popup) popup.style.display = "none";
 }
 
+
+
 /* =========================
 INIT
 ========================= */
 document.addEventListener("DOMContentLoaded", function(){
   loadInternships();
 });
+
+/* =========================
+FEEDBACK & REVIEWS
+========================= */
+
+function submitFeedback(){
+  const name = document.getElementById("name").value.trim();
+  const feedbackText = document.getElementById("feedbackText").value.trim();
+  const message = document.getElementById("feedbackMessage");
+
+  if(name === "" || feedbackText === ""){
+    message.innerText = "Please fill in both fields.";
+    message.style.color = "red";
+    return;
+  }
+
+  // Create new review element
+  const container = document.getElementById("reviewContainer");
+  const newComment = document.createElement("div");
+  newComment.className = "comment";
+
+  newComment.innerHTML = `
+    <div class="review-avatar">${name.charAt(0).toUpperCase()}</div>
+    <div class="comment-body">
+      <h4>${name}</h4>
+      <p>${feedbackText}</p>
+    </div>
+  `;
+
+  container.appendChild(newComment);
+
+  // Clear input fields and show confirmation
+  document.getElementById("name").value = "";
+  document.getElementById("feedbackText").value = "";
+  message.innerText = "Feedback submitted!";
+  message.style.color = "#38bdf8";
+
+  // Optional: Scroll to the new comment
+  newComment.scrollIntoView({behavior: "smooth"});
+}
